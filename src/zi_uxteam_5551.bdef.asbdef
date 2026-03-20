@@ -1,0 +1,53 @@
+managed implementation in class ZBP_I_UX_TEAM_5551 unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZI_UXTEAM_5551 alias UXTeam
+persistent table zrap_uxteam_5551
+draft table zrap_d_uxteam_51
+lock master total etag last_changed_at
+authorization master ( instance )
+etag master local_last_changed_at
+{
+  create;
+  update;
+  delete;
+
+  field ( numbering : managed, readonly ) id;
+  field ( readonly ) Active, salary, last_changed_at, local_last_changed_at;
+
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+
+  draft determine action Prepare
+  {
+    determination changeSalary;
+    validation validateAge;
+  }
+
+  action SetActive result [1] $self;
+
+  determination changeSalary on save { create; field Role; }
+  validation validateAge on save { field Age; create; }
+
+  side effects
+  {
+    determine action Prepare executed on field Role affects field Salary;
+  }
+
+  mapping for zrap_uxteam_5551
+    {
+      Id              = id;
+      FirstName       = firstName;
+      LastName        = lastName;
+      Age             = age;
+      Role            = role;
+      Salary          = salary;
+      Currency        = currency;
+      Active          = active;
+      last_changed_at = last_changed_at;
+     local_last_changed_at = local_last_changed_at;
+    }
+}

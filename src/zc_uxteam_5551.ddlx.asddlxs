@@ -1,0 +1,127 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'UX Team',
+    typeNamePlural: 'UX Team',
+    title: { type: #STANDARD, label: 'UX Team', value: 'id' }
+  },
+  presentationVariant: [{ sortOrder: [{ by: 'id', direction: #ASC }] }]
+}
+annotate entity ZC_UXTEAM_5551 with
+{
+  @UI.facet: [
+    {
+      id: 'GeneralInfo',
+      type: #COLLECTION,
+      label: 'General Information',
+      position: 10
+    },
+    {
+      id: 'General',
+      type: #IDENTIFICATION_REFERENCE,
+      parentId: 'GeneralInfo',
+      label: 'General',
+      position: 10
+    }
+  ]
+
+  @UI: {
+    identification: [
+      { position: 1, label: 'Id' },
+      { type: #FOR_ACTION, dataAction: 'SetActive', label: 'Set Active', position: 90 }
+    ]
+  }
+  id;
+
+  @UI: {
+    lineItem: [
+      { position: 10 }
+    ],
+    identification: [
+      { position: 10 }
+    ],
+    selectionField: [
+      { position: 10 }
+    ]
+  }
+  firstname;
+
+  @UI: {
+    lineItem: [
+      { position: 20 }
+    ],
+    identification: [
+      { position: 20 }
+    ],
+    selectionField: [
+      { position: 20 }
+    ]
+  }
+  lastname;
+
+  @UI: {
+    lineItem: [
+      { position: 30 }
+    ],
+    identification: [
+      { position: 30 }
+    ],
+    selectionField: [
+      { position: 30 }
+    ]
+  }
+  age;
+
+  @UI: {
+    lineItem: [
+      { position: 40 }
+    ],
+    identification: [
+      { position: 40 }
+    ],
+    selectionField: [
+      { position: 40 }
+    ]
+  }
+  role;
+
+  @UI: {
+    lineItem: [
+      { position: 50 }
+    ],
+    identification: [
+      { position: 50 }
+    ],
+    selectionField: [
+      { position: 50 }
+    ]
+  }
+  salary;
+
+  @UI: {
+    lineItem: [
+      { position: 60 }
+    ],
+    identification: [
+      { position: 60 }
+    ],
+    selectionField: [
+      { position: 60 }
+    ]
+  }
+  currency;
+
+  @UI: {
+    lineItem: [
+      { position: 70 },
+      { type: #FOR_ACTION, dataAction: 'SetActive', label: 'Set Active', position: 90 }
+    ],
+    identification: [
+      { position: 70 }
+    ],
+    selectionField: [
+      { position: 70 }
+    ]
+  }
+  active;
+}
