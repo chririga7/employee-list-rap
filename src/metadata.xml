@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+  <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470974/Common.xml?api=v2">
+    <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470968/UI.xml?api=v2">
+    <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+  </edmx:Reference>
+  <edmx:DataServices>
+    <Schema Namespace="com.sap.gateway.srvd.z_expose_team_5551.v0001" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="UXTeamType">
+        <Key>
+          <PropertyRef Name="id"/>
+          <PropertyRef Name="IsActiveEntity"/>
+        </Key>
+        <Property Name="id" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="firstname" Type="Edm.String" MaxLength="100"/>
+        <Property Name="lastname" Type="Edm.String" MaxLength="100"/>
+        <Property Name="age" Type="Edm.Byte"/>
+        <Property Name="role" Type="Edm.String" MaxLength="100"/>
+        <Property Name="salary" Type="Edm.Decimal" Precision="16" Scale="2"/>
+        <Property Name="currency" Type="Edm.String" MaxLength="5"/>
+        <Property Name="active" Type="Edm.String" MaxLength="1"/>
+        <Property Name="last_changed_at" Type="Edm.DateTimeOffset" Precision="7"/>
+        <Property Name="local_last_changed_at" Type="Edm.DateTimeOffset" Precision="7"/>
+        <Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+        <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false"/>
+        <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+        <NavigationProperty Name="DraftAdministrativeData" Type="com.sap.gateway.srvd.z_expose_team_5551.v0001.DraftAdministrativeDataType"/>
+        <NavigationProperty Name="SiblingEntity" Type="com.sap.gateway.srvd.z_expose_team_5551.v0001.UXTeamType"/>
+      </EntityType>
+      <EntityType Name="RoleVHType">
+        <Key>
+          <PropertyRef Name="Role"/>
+        </Key>
+        <Property Name="Role" Type="Edm.String" MaxLength="100" Nullable="false"/>
+      </EntityType>
+      <EntityType Name="DraftAdministrativeDataType">
+        <Key>
+          <PropertyRef Name="DraftUUID"/>
+        </Key>
+        <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+        <Property Name="CreatedByUser" Type="Edm.String" MaxLength="256"/>
+        <Property Name="DraftIsCreatedByMe" Type="Edm.Boolean"/>
+        <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+        <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="256"/>
+        <Property Name="InProcessByUser" Type="Edm.String" MaxLength="256"/>
+        <Property Name="DraftIsProcessedByMe" Type="Edm.Boolean"/>
+      </EntityType>
+      <Action Name="SetActive" IsBound="true">
+        <Parameter Name="in" Type="com.sap.gateway.srvd.z_expose_team_5551.v0001.UXTeamType"/>
+        <ReturnType Type="com.sap.gateway.srvd.z_expose_team_5551.v0001.UXTeamType"/>
+      </Action>
+      <Action Name="com.sap.gateway.srvd.z_expose_team_5551.v0001.draftEdit" IsBound="true">
+        <Parameter Name="in" Type="com.sap.gateway.srvd.z_expose_team_5551.v0001.UXTeamType"/>
+        <Parameter Name="PreserveChanges" Type="Edm.Boolean"/>
+        <ReturnType Type="com.sap.gateway.srvd.z_expose_team_5551.v0001.UXTeamType"/>
+      </Action>
+      <Action Name="com.sap.gateway.srvd.z_expose_team_5551.v0001.draftActivate" IsBound="true">
+        <Parameter Name="in" Type="com.sap.gateway.srvd.z_expose_team_5551.v0001.UXTeamType"/>
+        <ReturnType Type="com.sap.gateway.srvd.z_expose_team_5551.v0001.UXTeamType"/>
+      </Action>
+      <Action Name="com.sap.gateway.srvd.z_expose_team_5551.v0001.draftDiscard" IsBound="true">
+        <Parameter Name="in" Type="com.sap.gateway.srvd.z_expose_team_5551.v0001.UXTeamType"/>
+        <ReturnType Type="com.sap.gateway.srvd.z_expose_team_5551.v0001.UXTeamType"/>
+      </Action>
+      <Action Name="com.sap.gateway.srvd.z_expose_team_5551.v0001.draftPrepare" IsBound="true">
+        <Parameter Name="in" Type="com.sap.gateway.srvd.z_expose_team_5551.v0001.UXTeamType"/>
+        <Parameter Name="SideEffectsQualifier" Type="Edm.String"/>
+        <ReturnType Type="com.sap.gateway.srvd.z_expose_team_5551.v0001.UXTeamType"/>
+      </Action>
+      <EntityContainer Name="EntityContainer">
+        <EntitySet Name="UXTeam" EntityType="com.sap.gateway.srvd.z_expose_team_5551.v0001.UXTeamType">
+          <NavigationPropertyBinding Path="DraftAdministrativeData" Target="DraftAdministrativeData"/>
+          <NavigationPropertyBinding Path="SiblingEntity" Target="UXTeam"/>
+        </EntitySet>
+        <EntitySet Name="RoleVH" EntityType="com.sap.gateway.srvd.z_expose_team_5551.v0001.RoleVHType"/>
+        <EntitySet Name="DraftAdministrativeData" EntityType="com.sap.gateway.srvd.z_expose_team_5551.v0001.DraftAdministrativeDataType"/>
+      </EntityContainer>
+      <Annotations Target="com.sap.gateway.srvd.z_expose_team_5551.v0001.UXTeamType">
+        <Annotation Term="UI.HeaderInfo">
+          <Record Type="UI.HeaderInfoType">
+            <PropertyValue Property="TypeName" String="UX Team"/>
+            <PropertyValue Property="TypeNamePlural" String="UX Team"/>
+            <PropertyValue Property="Title">
+              <Record Type="UI.DataField">
+                <PropertyValue Property="Label" String="UX Team"/>
+                <PropertyValue Property="Value" Path="id"/>
+              </Record>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="UI.PresentationVariant">
+          <Record>
+            <PropertyValue Property="SortOrder">
+              <Collection>
+                <Record Type="Common.SortOrderType">
+                  <PropertyValue Property="Property" PropertyPath="id"/>
+                  <PropertyValue Property="Descending" Bool="false"/>
+                </Record>
+              </Collection>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+        <Annotation Term="UI.LineItem">
+          <Collection>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="firstname"/>
+              <PropertyValue Property="Label" String="First Name"/>
+              <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="lastname"/>
+              <PropertyValue Property="Label" String="Last Name"/>
+              <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="age"/>
+              <PropertyValue Property="Label" String="Age"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="role"/>
+              <PropertyValue Property="Label" String="Role"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="salary"/>
+              <PropertyValue Property="Label" String="Salary"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="currency"/>
+              <PropertyValue Property="Label" String="Currency"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="active"/>
+              <PropertyValue Property="Label" String="Active"/>
+            </Record>
+            <Record Type="UI.DataFieldForAction">
+              <PropertyValue Property="Action" String="com.sap.gateway.srvd.z_expose_team_5551.v0001.SetActive"/>
+              <PropertyValue Property="Label" String="Set Active"/>
+            </Record>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.Identification">
+          <Collection>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="id"/>
+              <PropertyValue Property="Label" String="Id"/>
+            </Record>
+            <Record Type="UI.DataFieldForAction">
+              <PropertyValue Property="Action" String="com.sap.gateway.srvd.z_expose_team_5551.v0001.SetActive"/>
+              <PropertyValue Property="Label" String="Set Active"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="firstname"/>
+              <PropertyValue Property="Label" String="First Name"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="lastname"/>
+              <PropertyValue Property="Label" String="Last Name"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="age"/>
+              <PropertyValue Property="Label" String="Age"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="role"/>
+              <PropertyValue Property="Label" String="Role"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="salary"/>
+              <PropertyValue Property="Label" String="Salary"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="currency"/>
+              <PropertyValue Property="Label" String="Currency"/>
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="active"/>
+              <PropertyValue Property="Label" String="Active"/>
+            </Record>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.SelectionFields">
+          <Collection>
+            <PropertyPath>firstname</PropertyPath>
+            <PropertyPath>lastname</PropertyPath>
+            <PropertyPath>age</PropertyPath>
+            <PropertyPath>role</PropertyPath>
+            <PropertyPath>salary</PropertyPath>
+            <PropertyPath>currency</PropertyPath>
+            <PropertyPath>active</PropertyPath>
+          </Collection>
+        </Annotation>
+        <Annotation Term="UI.Facets">
+          <Collection>
+            <Record Type="UI.CollectionFacet">
+              <PropertyValue Property="ID" String="GeneralInfo"/>
+              <PropertyValue Property="Label" String="General Information"/>
+              <PropertyValue Property="Facets">
+                <Collection>
+                  <Record Type="UI.ReferenceFacet">
+                    <PropertyValue Property="ID" String="General"/>
+                    <PropertyValue Property="Label" String="General"/>
+                    <PropertyValue Property="Target" AnnotationPath="@UI.Identification"/>
+                  </Record>
+                </Collection>
+              </PropertyValue>
+            </Record>
+          </Collection>
+        </Annotation>
+      </Annotations>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

@@ -124,4 +124,50 @@ annotate entity ZC_UXTEAM_5551 with
     ]
   }
   active;
+
+  @UI: {
+    lineItem: [
+      { position: 75 }
+    ],
+    identification: [
+      { position: 75 }
+    ]
+  }
+  date_of_birth;
+
+  @UI: {
+    lineItem: [
+      { position: 76 }
+    ],
+    identification: [
+      { position: 76 }
+    ]
+  }
+  gender;
+
+  @UI: {
+    lineItem: [
+      { position: 77 }
+    ],
+    identification: [
+      { position: 77 }
+    ],
+    selectionField: [
+      { position: 77 }
+    ]
+  }
+  birth_place;
+
+  @UI: {
+    lineItem: [
+      { position: 80, importance: #HIGH }
+    ],
+    identification: [
+      { position: 80 }
+    ],
+    selectionField: [
+      { position: 80 }
+    ]
+  }
+  codice_fiscale;
 }

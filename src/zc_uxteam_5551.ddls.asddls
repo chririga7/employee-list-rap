@@ -34,5 +34,14 @@ define root view entity ZC_UXTEAM_5551
       currency,
       local_last_changed_at,
       @EndUserText.label: 'Active'
-      active
+      active,
+      @EndUserText.label: 'Date of Birth'
+      date_of_birth,
+      @EndUserText.label: 'Gender'
+      gender,
+      @EndUserText.label: 'Birth Place'
+      @Search.defaultSearchElement: true
+      birth_place,
+      @EndUserText.label: 'Codice Fiscale'
+      codice_fiscale
 }

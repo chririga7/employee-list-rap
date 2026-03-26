@@ -12,6 +12,10 @@ define root view entity ZI_UXTEAM_5551 as select from zrap_uxteam_5551
     salary,
     currency,
     active,
+    date_of_birth,
+    gender,
+    birth_place,
+    codice_fiscale,
     last_changed_at,
     local_last_changed_at
 }

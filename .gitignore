@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.github_token
+*.tar
+.scp/
+.env
+Makefile*.mta
+mta_archives
+mta-*
+resources
+archive.zip
+.*_mta_build_tmp
