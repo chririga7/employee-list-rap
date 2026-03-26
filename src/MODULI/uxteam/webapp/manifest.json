@@ -137,7 +137,12 @@
           "options": {
             "settings": {
               "editableHeaderContent": false,
-              "contextPath": "/UXTeam"
+              "contextPath": "/UXTeam",
+              "controllerExtensions": {
+                "sap.fe.templates.ObjectPage.ObjectPageController": {
+                  "controllerName": "z.uxteam.uxteam.ext.controller.ObjectPageExt"
+                }
+              }
             }
           }
         }
