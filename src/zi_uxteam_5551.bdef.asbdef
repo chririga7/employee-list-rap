@@ -47,10 +47,10 @@ etag master local_last_changed_at
       Salary          = salary;
       Currency        = currency;
       Active          = active;
-      DateOfBirth     = date_of_birth;
-      Gender          = gender;
-      BirthPlace      = birth_place;
-      CodiceFiscale   = codice_fiscale;
+      date_of_birth   = date_of_birth;
+      gender          = gender;
+      birth_place     = birth_place;
+      codice_fiscale  = codice_fiscale;
       last_changed_at = last_changed_at;
      local_last_changed_at = local_last_changed_at;
     }
