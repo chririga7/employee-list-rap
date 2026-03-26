@@ -2,6 +2,7 @@ node_modules/
 dist/
 .github_token
 *.tar
+RIASSUNTO_PROGETTO.md
 .scp/
 .env
 Makefile*.mta
