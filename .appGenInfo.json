@@ -1,0 +1,28 @@
+{
+  "generationParameters": {
+    "generationDate": "Thu Mar 26 2026 09:15:22 GMT+0000 (Coordinated Universal Time)",
+    "generatorPlatform": "SAP Business Application Studio",
+    "serviceType": "File",
+    "metadataFilename": "metadata.xml",
+    "serviceUrl": "/here/goes/your/serviceurl/",
+    "appName": "uxteam",
+    "appTitle": "Employee List",
+    "appDescription": "Employee List - UX Team Management",
+    "appNamespace": "z.uxteam",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.146.0",
+    "enableEslint": false,
+    "enableTypeScript": false,
+    "showMockDataInfo": true,
+    "generatorVersion": "1.21.0",
+    "template": "List Report Page V4",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [
+      {
+        "type": "Main Entity",
+        "value": "UXTeam"
+      }
+    ],
+    "launchText": "To launch the generated application, run the following from the generated application root folder:\n\n```\n    npm start\n```"
+  }
+}
